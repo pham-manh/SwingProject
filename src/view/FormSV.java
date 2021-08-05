@@ -26,18 +26,21 @@ public class FormSV extends JFrame {
     private JButton button_remove;
     private JPanel main_panel;
     private JTable table_data;
+    private JScrollPane scrollPane;
 
     private ArrayList<Student> list_data = new ArrayList<>();
     private DefaultTableModel model;
 
 
-    {
-        model = (DefaultTableModel) table_data.getModel();
-    }
-
-
     private void tittle_Col_Table() {
-        table_data.setModel(new DefaultTableModel(null,new Object[]{"Name", "Id Student", "Date", "Email", "Phone Number", "Address"}));
+        table_data = new JTable();
+        model = new DefaultTableModel();
+        Object[] collums = {"Name", "ID Student", "Date of Birth", "Email", "Phone Number", "Address"};
+        Object[] row = new Object[0];
+        model.setColumnIdentifiers(collums);
+        table_data.setModel(model);
+        scrollPane.setViewportView(table_data);
+
     }
 
     public void show_result() {
