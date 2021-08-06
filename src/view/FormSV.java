@@ -56,12 +56,14 @@ public class FormSV extends JFrame {
         );
     }
 
-//    public void show_date(){
-//        Date a = new Date();
-//        SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
-//        textField_date.setText(df.format(a));
-//    }
-
+    public void reset_field(){
+        textField_name.setText("");
+        textField_idStudent.setText("");
+        textField_date.setText("");
+        textField_phone.setText("");
+        textField_email.setText("");
+        textField_address.setText("");
+    }
     public FormSV(String tittle) {
         super(tittle);
         tittle_Col_Table();
@@ -87,8 +89,15 @@ public class FormSV extends JFrame {
                 s.setEmail(textField_email.getText());
                 s.setPhoneNumber(textField_phone.getText());
                 s.setAddress(textField_address.getText());
-                list_data.add(s);
-                show_result();
+                if(s== null){
+                    list_data.add(s);
+                    show_result();
+                    reset_field();
+                }else {
+                    JOptionPane.showMessageDialog(rootPane,"No data in.");
+                    reset_field();
+                }
+
             }
         });
         button_remove.addActionListener(new ActionListener() {
