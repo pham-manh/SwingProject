@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SwingProject.iml" filepath="$PROJECT_DIR$/SwingProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic_table.iml" filepath="$PROJECT_DIR$/basic_table.iml" />
     </modules>
   </component>
 </project>

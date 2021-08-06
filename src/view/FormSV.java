@@ -7,7 +7,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FormSV extends JFrame {
     private JLabel label_name;
@@ -32,6 +35,8 @@ public class FormSV extends JFrame {
     private DefaultTableModel model;
 
 
+
+
     private void tittle_Col_Table() {
         table_data = new JTable();
         model = new DefaultTableModel();
@@ -51,6 +56,12 @@ public class FormSV extends JFrame {
         );
     }
 
+//    public void show_date(){
+//        Date a = new Date();
+//        SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+//        textField_date.setText(df.format(a));
+//    }
+
     public FormSV(String tittle) {
         super(tittle);
         tittle_Col_Table();
@@ -66,12 +77,34 @@ public class FormSV extends JFrame {
                 Student s = new Student();
                 s.setName(textField_name.getText());
                 s.setId(textField_idStudent.getText());
-                s.setDate(textField_date.getText());
+
+                try {
+                    s.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(textField_date.getText()));
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+
                 s.setEmail(textField_email.getText());
                 s.setPhoneNumber(textField_phone.getText());
                 s.setAddress(textField_address.getText());
                 list_data.add(s);
                 show_result();
+            }
+        });
+        button_remove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(table_data.getSelectedRowCount()==1){
+                    model.removeRow(table_data.getSelectedRow());
+                    JOptionPane.showMessageDialog(rootPane,"Successfully");
+                }
+                else{
+                    if(table_data.getSelectedRowCount()==0){
+                        JOptionPane.showMessageDialog(rootPane,"Table is Empty");
+                    }else {
+                        JOptionPane.showMessageDialog(rootPane,"Please select Singer row for Delete");
+                    }
+                }
             }
         });
     }

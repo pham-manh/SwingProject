@@ -1,15 +1,18 @@
 package emtity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Student implements Serializable {
     private String name;
     private String id;
     private String email;
     private String phoneNumber;
-    private String date;
+    private Date date;
     private String address;
+    
 
+    
     public String getName() {
         return name;
     }
@@ -42,11 +45,12 @@ public class Student implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDate() {
+    public Date getDate() {
+
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
